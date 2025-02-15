@@ -19,7 +19,7 @@ function git_branch_name()
   then
     :
   else
-    echo '- ('$branch')'
+    echo '('$branch')'
   fi
 }
 
@@ -27,7 +27,7 @@ function git_branch_name()
 setopt prompt_subst
 
 # Set the Zsh Prompt with Git branch
-PS1='%F{magenta}%n %F{red}%1~ $(git_branch_name) 
+PS1='%F{magenta}%n %F{green}%1~ %F{yellow}$(git_branch_name)
 %F{yellow}»%f '
 
 # Set CDPATH for easier navigation

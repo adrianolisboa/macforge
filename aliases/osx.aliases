@@ -11,10 +11,10 @@ alias books='open $HOME/Dropbox/Books'
 alias vimdir='cd ${HOME}/.vim/' # https://github.com/adrianolisboa/vim
 alias nvimdir='cd ${HOME}/.config/nvim' # https://github.com/adrianolisboa/dots.nvim
 alias dotfiles='cd ${HOME}/dotfiles' # https://github.com/adrianolisboa/dotfiles
-alias bashdir='cd ${LOAD_ROOT}' # Those files
+alias shelldir='cd ${LOAD_ROOT}' # Those files
 alias envdir='cd ${LOAD_ROOT}/osx-setup'
 
-alias fb='vim ${HOME}/.bash_profile'
+alias fshell='vim ${HOME}/.zshrc'
 alias sb='source ${HOME}/.zshrc'
 alias vb="cd ${LOAD_ROOT}; v load; cd -;" # edit these conf files
 alias less='less -R' # print raw characters
