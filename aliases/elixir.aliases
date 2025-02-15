@@ -28,3 +28,13 @@ alias gigaa="gigalixir apps"
 alias gigal="gigalixir logs"
 alias gigaps="gigalixir ps"
 alias gigaseeds="gigalixir run -- mix run priv/repo/seeds.exs"
+
+
+mixroutes() {
+  local query="$1"
+  if [[ -n "$query" ]]; then
+    mix phx.routes | grep --ignore-case --color=always "$query" | fzf --ansi --preview='echo {}'
+  else
+    mix phx.routes | fzf --ansi --preview='echo {}'
+  fi
+}
