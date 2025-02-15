@@ -1,0 +1,29 @@
+# vim: ft=sh sw=2 ts=2 expandtab
+
+function update_vim() {
+    sb
+    vimdir && git pull && vim +PackClean +PackUpdate +q # Update vim repository and install new plugins (if exists)
+}
+
+function update_machine() {
+    update_vim
+    bashdir && git pull # Update bash repository and source files
+    source ${HOME}/.bash_profile
+    cd
+    print_jobs_done
+}
+
+function update_osx() {
+    update_machine
+    envdir && git pull && confirm 'Do you want to update brew dependencies?' && brew update && brew bundle # Update environment setup
+    cd
+    print_jobs_done
+}
+
+function print_jobs_done() {
+    echo "Jobs Done!"
+}
+
+alias uvim='update_vim' # This only updates my vim plugins
+alias uma='update_machine' # This only updates essential
+alias uos='update_osx'     # Updates essentials also brew files

@@ -1,0 +1,10 @@
+# vim: ft=sh sw=2 ts=2 expandtabadrianolisboa
+# Opens a zoom meeting with the name you've given it.
+#
+function myzoom() { 
+    /usr/bin/open "https://thoughtworks.zoom.us/my/$1"
+}
+
+function zoom() { 
+    /usr/bin/open "https://zoom.us/j/$1"
+}
