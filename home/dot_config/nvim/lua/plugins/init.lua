@@ -21,13 +21,14 @@ return require("lazy").setup({
     lazy = false, -- Load during startup
     priority = 1000, -- Ensure it loads before other plugins
     config = function()
-      vim.cmd [[ colorscheme solarized ]]
+      vim.cmd([[ colorscheme solarized ]])
     end,
   },
 
   -- Treesitter for better syntax highlighting
   {
     "nvim-treesitter/nvim-treesitter",
+    branch = "master", -- `main` is the incompatible rewrite; pin so an update cannot jump to it
     build = ":TSUpdate",
     config = function()
       require("nvim-treesitter.configs").setup({
@@ -75,11 +76,11 @@ return require("lazy").setup({
 
   -- Telescope for fuzzy finding
   {
-    'nvim-telescope/telescope.nvim',
+    "nvim-telescope/telescope.nvim",
     dependencies = {
-      'nvim-lua/plenary.nvim',
-      'nvim-telescope/telescope-ui-select.nvim',
-      { 'nvim-telescope/telescope-fzf-native.nvim', build = 'make' },
+      "nvim-lua/plenary.nvim",
+      "nvim-telescope/telescope-ui-select.nvim",
+      { "nvim-telescope/telescope-fzf-native.nvim", build = "make" },
     },
     config = function()
       require("plugins.specs.telescope")
@@ -183,7 +184,9 @@ return require("lazy").setup({
         }),
 
         snippet = {
-          expand = function(args) luasnip.lsp_expand(args.body) end,
+          expand = function(args)
+            luasnip.lsp_expand(args.body)
+          end,
         },
       })
     end,

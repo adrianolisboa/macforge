@@ -11,28 +11,28 @@ keymap("n", "<leader>nt", function()
 end, { noremap = true, silent = true, desc = "Toggle Nvim Tree" })
 
 -- Keybinding for opening tree at the current file
-vim.keymap.set('n', '<leader>nf', ':NvimTreeFindFile<CR>', { noremap = true, silent = true })
+vim.keymap.set("n", "<leader>nf", ":NvimTreeFindFile<CR>", { noremap = true, silent = true })
 
 -- Telescope. Resolved on keypress rather than at load time, so a telescope
 -- failure cannot wipe out every mapping defined below this point.
 local function builtin(name)
   return function()
-    require('telescope.builtin')[name]()
+    require("telescope.builtin")[name]()
   end
 end
 
-keymap('n', '<leader>ff', builtin('find_files'), { desc = 'Telescope find files' })
-keymap('n', '<leader>fg', builtin('live_grep'), { desc = 'Telescope live grep' })
-keymap('n', '<leader>fb', builtin('buffers'), { desc = 'Telescope buffers' })
-keymap('n', '<leader>fh', builtin('help_tags'), { desc = 'Telescope help tags' })
+keymap("n", "<leader>ff", builtin("find_files"), { desc = "Telescope find files" })
+keymap("n", "<leader>fg", builtin("live_grep"), { desc = "Telescope live grep" })
+keymap("n", "<leader>fb", builtin("buffers"), { desc = "Telescope buffers" })
+keymap("n", "<leader>fh", builtin("help_tags"), { desc = "Telescope help tags" })
 
-keymap('n', '<leader>gd', function()
+keymap("n", "<leader>gd", function()
   if #vim.lsp.get_clients() > 0 then
-    require('telescope.builtin').lsp_definitions()
+    require("telescope.builtin").lsp_definitions()
   else
     print("No LSP server attached")
   end
-end, { desc = 'Go to Definition' })
+end, { desc = "Go to Definition" })
 
 -- Bufferline
 keymap("n", "<leader>bn", ":BufferLineCycleNext<CR>", { desc = "Next buffer" })
@@ -64,7 +64,7 @@ keymap("n", "<leader>mv", function()
 end, { desc = "Verbose format" })
 
 -- Other key mappings
-vim.keymap.set('n', '<leader>cf', ':CopyFullPath<CR>', { noremap = true, silent = true })
-vim.keymap.set('n', '<leader>cr', ':CopyRelativePath<CR>', { noremap = true, silent = true })
+vim.keymap.set("n", "<leader>cf", ":CopyFullPath<CR>", { noremap = true, silent = true })
+vim.keymap.set("n", "<leader>cr", ":CopyRelativePath<CR>", { noremap = true, silent = true })
 
 return true
