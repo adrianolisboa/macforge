@@ -9,7 +9,7 @@ require("ibl").setup({
     char = "┃", -- Character for scope guides
   },
   exclude = {
-    filetypes = { "help", "dashboard", "NvimTree", "packer" }, -- Exclude certain file types
+    filetypes = { "help", "dashboard", "NvimTree", "lazy" }, -- Exclude certain file types
     buftypes = { "terminal", "nofile" }, -- Exclude certain buffer types
   },
 })

@@ -22,8 +22,10 @@ require("gitsigns").setup({
       gs.blame_line({ full = true })
     end, { desc = "Git blame" })
 
-    -- Git status
-    keymap("n", "<leader>gs", ":Gitsigns status<CR>", { desc = "Git status" })
+    -- Diff the file against the index. Gitsigns has no "status" action.
+    keymap("n", "<leader>gs", function()
+      gs.diffthis()
+    end, { desc = "Diff file against index" })
 
     -- Checkout (revert changes to file)
     keymap("n", "<leader>gr", function()

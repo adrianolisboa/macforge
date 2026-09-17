@@ -13,18 +13,22 @@ end, { noremap = true, silent = true, desc = "Toggle Nvim Tree" })
 -- Keybinding for opening tree at the current file
 vim.keymap.set('n', '<leader>nf', ':NvimTreeFindFile<CR>', { noremap = true, silent = true })
 
--- Telescope
-local builtin = require('telescope.builtin')
+-- Telescope. Resolved on keypress rather than at load time, so a telescope
+-- failure cannot wipe out every mapping defined below this point.
+local function builtin(name)
+  return function()
+    require('telescope.builtin')[name]()
+  end
+end
 
-keymap('n', '<leader>ff', builtin.find_files, { desc = 'Telescope find files' })
-keymap('n', '<leader>fg', builtin.live_grep, { desc = 'Telescope live grep' })
-keymap('n', '<leader>fb', builtin.buffers, { desc = 'Telescope buffers' })
-keymap('n', '<leader>fh', builtin.help_tags, { desc = 'Telescope help tags' })
+keymap('n', '<leader>ff', builtin('find_files'), { desc = 'Telescope find files' })
+keymap('n', '<leader>fg', builtin('live_grep'), { desc = 'Telescope live grep' })
+keymap('n', '<leader>fb', builtin('buffers'), { desc = 'Telescope buffers' })
+keymap('n', '<leader>fh', builtin('help_tags'), { desc = 'Telescope help tags' })
 
 keymap('n', '<leader>gd', function()
-  local clients = vim.lsp.get_active_clients()
-  if #clients > 0 then
-    builtin.lsp_definitions() -- Use Telescope for LSP definitions
+  if #vim.lsp.get_clients() > 0 then
+    require('telescope.builtin').lsp_definitions()
   else
     print("No LSP server attached")
   end

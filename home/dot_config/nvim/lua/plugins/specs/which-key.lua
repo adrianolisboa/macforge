@@ -1,3 +1,6 @@
+-- Returned straight into lazy's spec list from plugins/init.lua, the same way
+-- claudecode.lua is. Requiring this file inside a `config` function would only
+-- build the table and throw it away.
 return {
   "folke/which-key.nvim",
   event = "VeryLazy",
@@ -6,6 +9,7 @@ return {
     vim.o.timeoutlen = 300
   end,
   opts = {
+    delay = 300,
     plugins = {
       marks = true,
       registers = true,
@@ -23,43 +27,26 @@ return {
         g = true,
       },
     },
-    window = {
+    win = {
       border = "single",
-      position = "bottom",
-      margin = { 1, 0, 1, 0 },
-      padding = { 2, 2, 2, 2 },
-      winblend = 0,
+      padding = { 2, 2 },
     },
     layout = {
-      height = { min = 4, max = 25 },
       width = { min = 20, max = 50 },
       spacing = 3,
       align = "center",
     },
-    ignore_missing = false,
-    hidden = { "<silent>", "<cmd>", "<Cmd>", "<CR>", "call", "lua", "^:", "^ " },
     show_help = true,
-    triggers = "auto",
-    triggers_blacklist = {
-      i = { "j", "k" },
-      v = { "j", "k" },
+    spec = {
+      { "<leader>b", group = "Buffer" },
+      { "<leader>c", group = "Claude Code / copy path" },
+      { "<leader>f", group = "Find (Telescope)" },
+      { "<leader>g", group = "Git" },
+      { "<leader>h", group = "Git hunk" },
+      { "<leader>m", group = "Format" },
+      { "<leader>n", group = "NvimTree" },
+      { "<leader>r", group = "Rename" },
+      { "<leader>t", group = "Tests" },
     },
   },
-  config = function(_, opts)
-    local wk = require("which-key")
-    wk.setup(opts)
-    
-    -- Registrar grupos de teclas para melhor organização
-    wk.register({
-      ["<leader>"] = {
-        f = { name = "Telescope/Find" },
-        b = { name = "Buffer" },
-        n = { name = "NvimTree" },
-        t = { name = "Tests" },
-        m = { name = "Format" },
-        c = { name = "Copy Paths" },
-        a = { name = "Avante/AI" },
-      },
-    })
-  end,
 }

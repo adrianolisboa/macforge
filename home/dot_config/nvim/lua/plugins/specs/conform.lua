@@ -1,13 +1,12 @@
 require("conform").setup({
   formatters_by_ft = {
-    elixir = { "mix" }, -- Use the mix formatter for Elixir files
-    javascript = { "prettier" }, -- Example: Use Prettier for JavaScript
-    typescript = { "prettier" },
-    lua = { "stylua" }, -- Example: Use Stylua for Lua
-    python = { "black" }, -- Example: Use Black for Python
+    elixir = { "mix" },
+    -- stylua is installed and configured in .stylua.toml, but deliberately not
+    -- wired up here: it collapses this config's aligned trailing comments.
   },
   format_on_save = {
-    timeout_ms = 1000, -- Set a timeout for formatting
-    lsp_fallback = true, -- Use LSP formatting if no Conform formatter is found
+    -- mix format boots the BEAM, which is slow in an umbrella the size of Tiger.
+    timeout_ms = 3000,
+    lsp_format = "fallback",
   },
 })

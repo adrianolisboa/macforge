@@ -10,8 +10,8 @@ g.mapleader = " "
 
 -- Indentation settings
 o.expandtab = true            -- Use spaces instead of tabs
-o.shiftwidth = 4              -- Indent size for auto-indent
-o.tabstop = 4                 -- Tab size
+o.shiftwidth = 2              -- Indent size for auto-indent
+o.tabstop = 2                 -- Tab size
 o.smartindent = true          -- Enable smart indentation
 
 -- Search settings
@@ -32,3 +32,8 @@ o.relativenumber = true       -- Relative line numbers
 o.termguicolors = true        -- Enable 24-bit RGB colors
 o.splitright = true           -- Vertical splits go to the right
 o.splitbelow = true           -- Horizontal splits go below
+
+-- Editor behaviour
+o.updatetime = 250            -- Gitsigns inline blame waits on this; 4000 felt broken
+o.signcolumn = "yes"          -- Keep the gutter on so signs do not shift the text sideways
+o.undofile = true             -- Persist undo history between sessions

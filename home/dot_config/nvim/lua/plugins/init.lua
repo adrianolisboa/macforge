@@ -1,5 +1,5 @@
 local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
-if not vim.loop.fs_stat(lazypath) then
+if not vim.uv.fs_stat(lazypath) then
   vim.fn.system({
     "git",
     "clone",
@@ -64,6 +64,7 @@ return require("lazy").setup({
     },
   },
 
+  -- Icon provider snacks.nvim prefers when it is installed
   {
     "echasnovski/mini.icons",
     version = false,
@@ -73,16 +74,12 @@ return require("lazy").setup({
   },
 
   -- Telescope for fuzzy finding
-  { 'nvim-telescope/telescope-fzf-native.nvim', build = 'CFLAGS=-march=native make' },
-
   {
     'nvim-telescope/telescope.nvim',
     dependencies = {
-      'nvim-lua/popup.nvim',
       'nvim-lua/plenary.nvim',
-      'nvim-telescope/telescope-github.nvim',
       'nvim-telescope/telescope-ui-select.nvim',
-      'nvim-telescope/telescope-fzf-native.nvim'
+      { 'nvim-telescope/telescope-fzf-native.nvim', build = 'make' },
     },
     config = function()
       require("plugins.specs.telescope")
@@ -211,11 +208,5 @@ return require("lazy").setup({
   },
 
   -- Which-key for displaying keybindings
-  {
-    "folke/which-key.nvim",
-    event = "VeryLazy",
-    config = function()
-      require("plugins.specs.which-key")
-    end,
-  },
+  require("plugins.specs.which-key"),
 })

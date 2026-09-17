@@ -18,7 +18,7 @@ require("nvim-tree").setup({
     dotfiles = false,
   },
   update_focused_file = {
-    enable = true, -- Automatically focus on the current file
-    update_cwd = true, -- Update the working directory to match the file's directory
+    enable = true, -- Follow the file you are editing in the tree
+    update_root = false, -- Moving the root would also move Telescope's search root
   },
 })
