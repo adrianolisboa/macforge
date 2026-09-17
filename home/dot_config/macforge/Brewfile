@@ -31,6 +31,7 @@ brew "docker-compose"  # compose plugin
 # GUI apps
 cask "1password-cli"   # secrets + SSH agent + git signing
 cask "font-inter"
+cask "font-fira-code-nerd-font"  # iTerm2 profile font (FiraCodeNFM-Reg); Nerd glyphs for nvim icons
 cask "macdown"
 cask "ngrok"
 cask "notunes"
