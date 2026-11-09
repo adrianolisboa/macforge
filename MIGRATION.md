@@ -136,8 +136,8 @@ Its **config** (settings, CLAUDE.md, skills, commands, hooks) lives in a separat
 **private** repo — kept out of this public repo because it's work-flavored:
 
 ```bash
-git clone git@github.com:adrianolisboa/claude-config.git ~/Projects/claude-config
-~/Projects/claude-config/install.sh   # symlinks the config into ~/.claude (backs up existing)
+git clone git@github.com:adrianolisboa/agent-config.git ~/Projects/agent-config
+~/Projects/agent-config/install.sh   # symlinks the config into ~/.claude (backs up existing)
 ```
 
 Auth is NOT in that repo — set up per machine:
