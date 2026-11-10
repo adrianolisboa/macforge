@@ -28,6 +28,23 @@ nvim
 # :Lazy sync
 ```
 
+## Language servers and formatting
+
+The Brewfile installs every server; `lua/plugins/specs/lsp.lua` turns them on.
+
+| Language | Server |
+| --- | --- |
+| Elixir | `expert` |
+| Lua | `lua_ls` |
+| TypeScript / JavaScript / React | `vtsls` |
+| ESLint, JSON, CSS | `eslint`, `jsonls`, `cssls` |
+| Tailwind | `tailwindcss` (only starts in Tailwind projects) |
+
+Format on save (`lua/plugins/specs/conform.lua`): `mix format` for Elixir,
+`stylua` for Lua, and `prettierd` for web files only when the repo has a
+prettier config. Web files never fall back to LSP formatting, so a repo without
+prettier is not reformatted.
+
 ## AI plugin
 
 Uses [`claudecode.nvim`](https://github.com/coder/claudecode.nvim) (Claude Code

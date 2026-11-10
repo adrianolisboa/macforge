@@ -8,19 +8,16 @@ vim.lsp.config("*", {
   root_markers = { ".git" },
 })
 
--- Lexical (Elixir) — packaged build at ~/Projects/lexical
--- Refresh with: cd ~/Projects/lexical && mix package
-vim.lsp.config("lexical", {
-  cmd = { vim.fn.expand("~/Projects/lexical/_build/dev/package/lexical/bin/start_lexical.sh") },
+-- Expert (Elixir), the official language server that replaced Lexical.
+-- Installed by the Brewfile. nvim-lspconfig has no bundled config for it yet.
+vim.lsp.config("expert", {
+  cmd = { "expert", "--stdio" },
   filetypes = { "elixir", "eelixir", "heex", "surface" },
   root_markers = { "mix.exs", ".git" },
 })
 
--- Lua (for editing this nvim config). No-op if lua-language-server isn't installed.
+-- Lua (for editing this nvim config). cmd and filetypes come from nvim-lspconfig.
 vim.lsp.config("lua_ls", {
-  cmd = { "lua-language-server" },
-  filetypes = { "lua" },
-  root_markers = { ".luarc.json", ".luarc.jsonc", ".git" },
   settings = {
     Lua = {
       runtime = { version = "LuaJIT" },
@@ -34,7 +31,17 @@ vim.lsp.config("lua_ls", {
   },
 })
 
-vim.lsp.enable({ "lexical", "lua_ls" })
+-- Servers installed by the Brewfile. The ones without a config above use the
+-- defaults nvim-lspconfig ships in its lsp/ directory.
+vim.lsp.enable({
+  "expert", -- Elixir
+  "lua_ls", -- Lua
+  "vtsls", -- TypeScript / JavaScript / React
+  "eslint", -- ESLint diagnostics and fixes
+  "jsonls", -- JSON
+  "cssls", -- CSS
+  "tailwindcss", -- Tailwind class completion; only starts in Tailwind projects
+})
 
 -- Buffer-local keymaps when an LSP attaches
 vim.api.nvim_create_autocmd("LspAttach", {

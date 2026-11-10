@@ -73,7 +73,8 @@ config belongs in `~/.config/macforge/secrets.zsh` (sourced at the end if presen
 ## Neovim
 
 Applied to `~/.config/nvim` (lazy.nvim, LSP, telescope, conform, claudecode.nvim);
-`lazy.nvim` bootstraps itself on first launch. See `home/dot_config/nvim/README.md`.
+`lazy.nvim` bootstraps itself on first launch. Language servers and formatters
+come from the Brewfile. See `home/dot_config/nvim/README.md`.
 
 ## gh (GitHub CLI)
 

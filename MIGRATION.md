@@ -126,7 +126,9 @@ brew install --cask font-fira-code-nerd-font # Nerd Font for icons
 atuin import auto                            # import existing shell history (atuin starts empty)
 ```
 
-Set the terminal font to "FiraCode Nerd Font". atuin config (searches all
+Set the terminal font to "FiraCode Nerd Font". The language servers and
+formatters nvim uses (lua-language-server, expert, vtsls, ESLint/JSON/CSS,
+Tailwind, prettierd, tree-sitter-cli) come from the Brewfile. atuin config (searches all
 history, local-only) is managed by macforge.
 
 ## 5b. Claude Code config (private repo)

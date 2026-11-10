@@ -17,6 +17,13 @@ brew "atuin"       # shell history across panes (sync off)
 
 # Editor, git, and dev essentials (were installed but not tracked).
 brew "neovim"          # editor (config in nvim/ package)
+brew "tree-sitter-cli" # nvim-treesitter (main branch) builds parsers with it
+brew "lua-language-server"          # nvim LSP: Lua
+brew "expert"                       # nvim LSP: Elixir (replaced Lexical)
+brew "vtsls"                        # nvim LSP: TypeScript / JavaScript / React
+brew "vscode-langservers-extracted" # nvim LSP: ESLint, JSON, CSS, HTML
+brew "tailwindcss-language-server"  # nvim LSP: Tailwind classes
+brew "prettierd"                    # nvim format on save, only in repos with a prettier config
 brew "gh"              # GitHub CLI (config in gh/ package)
 brew "git-lfs"         # required by .gitconfig lfs filter
 brew "gitleaks"        # required by the pre-push secret-scan hook
