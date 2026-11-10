@@ -33,6 +33,19 @@ nvim
 Uses [`claudecode.nvim`](https://github.com/coder/claudecode.nvim) (Claude Code
 integration). Keymaps under `<leader>c*` — see `lua/plugins/specs/claudecode.lua`.
 
+## Markdown
+
+[`render-markdown.nvim`](https://github.com/MeanderingProgrammer/render-markdown.nvim)
+draws headings, lists, checkboxes, tables and code blocks in normal mode.
+Insert mode shows the raw text, and so does the line under the cursor.
+`<leader>mr` turns the rendering on and off. Markdown buffers also soft wrap at
+word boundaries, and `j`/`k` move by screen line.
+
+`lua/plugins/specs/treesitter-compat.lua` patches three query directives that the
+archived `master` branch of nvim-treesitter breaks on Neovim 0.12 (code blocks in
+markdown crashed with `attempt to call method 'range'`). Delete it when moving to
+the `main` branch.
+
 ## Required font
 
 Works best with a Nerd Font (e.g. FiraCode Nerd Font):
