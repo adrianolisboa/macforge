@@ -43,7 +43,7 @@ return {
       { "<leader>f", group = "Find (Telescope)" },
       { "<leader>g", group = "Git" },
       { "<leader>h", group = "Git hunk" },
-      { "<leader>m", group = "Format" },
+      { "<leader>m", group = "Format / Markdown" },
       { "<leader>n", group = "NvimTree" },
       { "<leader>r", group = "Rename" },
       { "<leader>t", group = "Tests" },

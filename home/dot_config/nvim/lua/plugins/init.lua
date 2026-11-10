@@ -33,7 +33,18 @@ return require("lazy").setup({
     config = function()
       require("nvim-treesitter.configs").setup({
         -- Add all required parsers here
-        ensure_installed = { "lua", "python", "javascript", "elixir", "eex", "heex" },
+        ensure_installed = {
+          "lua",
+          "python",
+          "javascript",
+          "elixir",
+          "eex",
+          "heex",
+          "markdown",
+          "markdown_inline",
+          "html",
+          "yaml", -- front matter
+        },
 
         -- Enable syntax highlighting
         highlight = {
@@ -46,6 +57,9 @@ return require("lazy").setup({
           enable = true,
         },
       })
+
+      -- Fix directives the archived master branch breaks on Neovim 0.12
+      require("plugins.specs.treesitter-compat")
     end,
   },
 
@@ -122,6 +136,9 @@ return require("lazy").setup({
       require("plugins.specs.conform")
     end,
   },
+
+  -- Markdown rendered in normal mode, raw in insert mode
+  require("plugins.specs.render-markdown"),
 
   ------ A.I Plugins ------
   require("plugins.specs.claudecode"),
