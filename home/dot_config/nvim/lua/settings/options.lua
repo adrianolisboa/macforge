@@ -37,3 +37,8 @@ o.splitbelow = true -- Horizontal splits go below
 o.updatetime = 250 -- Gitsigns inline blame waits on this; 4000 felt broken
 o.signcolumn = "yes" -- Keep the gutter on so signs do not shift the text sideways
 o.undofile = true -- Persist undo history between sessions
+
+-- Bars
+o.laststatus = 3 -- one statusline for the whole window instead of one per split
+o.showmode = false -- lualine already shows the mode
+o.smoothscroll = true -- scroll wrapped lines by screen line instead of showing @@@

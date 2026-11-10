@@ -80,9 +80,7 @@ return require("lazy").setup({
   {
     "nvim-lualine/lualine.nvim",
     config = function()
-      require("lualine").setup({
-        options = { theme = "auto" },
-      })
+      require("plugins.specs.lualine")
     end,
   },
 

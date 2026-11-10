@@ -11,7 +11,7 @@ keymap("n", "<leader>nt", function()
 end, { noremap = true, silent = true, desc = "Toggle Nvim Tree" })
 
 -- Keybinding for opening tree at the current file
-keymap("n", "<leader>nf", ":NvimTreeFindFile<CR>", { silent = true, desc = "Show current file in tree" })
+keymap("n", "<leader>nf", "<cmd>NvimTreeFindFile<CR>", { silent = true, desc = "Show current file in tree" })
 
 -- Telescope. Resolved on keypress rather than at load time, so a telescope
 -- failure cannot wipe out every mapping defined below this point.
@@ -42,20 +42,20 @@ keymap("n", "<leader>?", function()
 end, { desc = "Shortcuts for this buffer" })
 
 -- Bufferline
-keymap("n", "<leader>bn", ":BufferLineCycleNext<CR>", { desc = "Next buffer" })
-keymap("n", "<leader>bp", ":BufferLineCyclePrev<CR>", { desc = "Previous buffer" })
-keymap("n", "<leader>br", ":BufferLineMoveNext<CR>", { desc = "Move buffer right" })
-keymap("n", "<leader>bl", ":BufferLineMovePrev<CR>", { desc = "Move buffer left" })
-keymap("n", "<leader>bd", ":bdelete<CR>", { desc = "Close current buffer" })
-keymap("n", "<leader>ba", ":bufdo bdelete<CR>", { desc = "Close all buffers" })
-keymap("n", "<leader>bo", ":%bd|e#|bd#<CR>", { desc = "Close all except current" })
+keymap("n", "<leader>bn", "<cmd>BufferLineCycleNext<CR>", { desc = "Next buffer" })
+keymap("n", "<leader>bp", "<cmd>BufferLineCyclePrev<CR>", { desc = "Previous buffer" })
+keymap("n", "<leader>br", "<cmd>BufferLineMoveNext<CR>", { desc = "Move buffer right" })
+keymap("n", "<leader>bl", "<cmd>BufferLineMovePrev<CR>", { desc = "Move buffer left" })
+keymap("n", "<leader>bd", "<cmd>bdelete<CR>", { desc = "Close current buffer" })
+keymap("n", "<leader>ba", "<cmd>bufdo bdelete<CR>", { desc = "Close all buffers" })
+keymap("n", "<leader>bo", "<cmd>%bd|e#|bd#<CR>", { desc = "Close all except current" })
 
 -- Vim-Test
-keymap("n", "<leader>tn", ":TestNearest<CR>", { desc = "Run nearest test" })
-keymap("n", "<leader>tf", ":TestFile<CR>", { desc = "Run tests in file" })
-keymap("n", "<leader>ts", ":TestSuite<CR>", { desc = "Run entire test suite" })
-keymap("n", "<leader>tl", ":TestLast<CR>", { desc = "Re-run last test" })
-keymap("n", "<leader>tv", ":TestVisit<CR>", { desc = "Visit last test location" })
+keymap("n", "<leader>tn", "<cmd>TestNearest<CR>", { desc = "Run nearest test" })
+keymap("n", "<leader>tf", "<cmd>TestFile<CR>", { desc = "Run tests in file" })
+keymap("n", "<leader>ts", "<cmd>TestSuite<CR>", { desc = "Run entire test suite" })
+keymap("n", "<leader>tl", "<cmd>TestLast<CR>", { desc = "Re-run last test" })
+keymap("n", "<leader>tv", "<cmd>TestVisit<CR>", { desc = "Visit last test location" })
 
 -- Formatter
 keymap("n", "<leader>mf", function()
@@ -71,7 +71,7 @@ keymap("n", "<leader>mv", function()
 end, { desc = "Verbose format" })
 
 -- Other key mappings
-keymap("n", "<leader>cf", ":CopyFullPath<CR>", { silent = true, desc = "Copy full file path" })
-keymap("n", "<leader>cr", ":CopyRelativePath<CR>", { silent = true, desc = "Copy relative file path" })
+keymap("n", "<leader>cf", "<cmd>CopyFullPath<CR>", { silent = true, desc = "Copy full file path" })
+keymap("n", "<leader>cr", "<cmd>CopyRelativePath<CR>", { silent = true, desc = "Copy relative file path" })
 
 return true
