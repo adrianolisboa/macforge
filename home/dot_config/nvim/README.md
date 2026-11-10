@@ -58,10 +58,9 @@ Insert mode shows the raw text, and so does the line under the cursor.
 `<leader>mr` turns the rendering on and off. Markdown buffers also soft wrap at
 word boundaries, and `j`/`k` move by screen line.
 
-`lua/plugins/specs/treesitter-compat.lua` patches three query directives that the
-archived `master` branch of nvim-treesitter breaks on Neovim 0.12 (code blocks in
-markdown crashed with `attempt to call method 'range'`). Delete it when moving to
-the `main` branch.
+Syntax highlighting comes from the `main` branch of nvim-treesitter
+(`lua/plugins/specs/treesitter.lua`). It needs `tree-sitter-cli`, which the
+Brewfile installs, to build parsers.
 
 ## Required font
 

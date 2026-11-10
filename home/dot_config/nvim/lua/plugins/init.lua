@@ -25,41 +25,16 @@ return require("lazy").setup({
     end,
   },
 
-  -- Treesitter for better syntax highlighting
+  -- Treesitter for better syntax highlighting. The `main` branch is a rewrite:
+  -- it only installs parsers, and Neovim's own treesitter does the highlighting.
+  -- It does not support lazy loading. Needs tree-sitter-cli (Brewfile).
   {
     "nvim-treesitter/nvim-treesitter",
-    branch = "master", -- `main` is the incompatible rewrite; pin so an update cannot jump to it
+    branch = "main",
+    lazy = false,
     build = ":TSUpdate",
     config = function()
-      require("nvim-treesitter.configs").setup({
-        -- Add all required parsers here
-        ensure_installed = {
-          "lua",
-          "python",
-          "javascript",
-          "elixir",
-          "eex",
-          "heex",
-          "markdown",
-          "markdown_inline",
-          "html",
-          "yaml", -- front matter
-        },
-
-        -- Enable syntax highlighting
-        highlight = {
-          enable = true, -- Enable Treesitter-based highlighting
-          additional_vim_regex_highlighting = false, -- Disable legacy Vim regex highlighting
-        },
-
-        -- Enable Treesitter-based indentation for supported languages
-        indent = {
-          enable = true,
-        },
-      })
-
-      -- Fix directives the archived master branch breaks on Neovim 0.12
-      require("plugins.specs.treesitter-compat")
+      require("plugins.specs.treesitter")
     end,
   },
 
