@@ -30,6 +30,11 @@ keymap("n", "<leader>fw", builtin("grep_string"), { desc = "Telescope grep word 
 keymap("n", "<leader>fd", builtin("diagnostics"), { desc = "Telescope diagnostics" })
 keymap("n", "<leader>f.", builtin("resume"), { desc = "Telescope resume last search" })
 
+-- Short versions of the two most used searches, as in LazyVim and VS Code.
+keymap("n", "<C-p>", builtin("find_files"), { desc = "Find files" })
+keymap("n", "<leader><leader>", builtin("find_files"), { desc = "Find files" })
+keymap("n", "<leader>/", builtin("live_grep"), { desc = "Search text in project" })
+
 -- Bufferline
 keymap("n", "<leader>bn", ":BufferLineCycleNext<CR>", { desc = "Next buffer" })
 keymap("n", "<leader>bp", ":BufferLineCyclePrev<CR>", { desc = "Previous buffer" })
