@@ -36,18 +36,18 @@ require("gitsigns").setup({
 
     -- Navigation
     keymap("n", "]c", function()
-      gs.next_hunk()
+      gs.nav_hunk("next")
     end, { desc = "Next hunk" })
 
     keymap("n", "[c", function()
-      gs.prev_hunk()
+      gs.nav_hunk("prev")
     end, { desc = "Previous hunk" })
 
     -- Actions
-    keymap({ "n", "v" }, "<leader>hs", ":Gitsigns stage_hunk<CR>", { desc = "Stage hunk" })
+    -- On a hunk that is already staged, stage_hunk unstages it.
+    keymap({ "n", "v" }, "<leader>hs", ":Gitsigns stage_hunk<CR>", { desc = "Stage / unstage hunk" })
     keymap({ "n", "v" }, "<leader>hr", ":Gitsigns reset_hunk<CR>", { desc = "Reset hunk" })
     keymap("n", "<leader>hS", gs.stage_buffer, { desc = "Stage buffer" })
-    keymap("n", "<leader>hu", gs.undo_stage_hunk, { desc = "Undo stage hunk" })
     keymap("n", "<leader>hR", gs.reset_buffer, { desc = "Reset buffer" })
   end,
 })

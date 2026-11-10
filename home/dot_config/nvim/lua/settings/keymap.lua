@@ -2,8 +2,8 @@
 local keymap = vim.keymap.set
 
 -- General key mappings
--- Turn off search highlight
-keymap("n", "<leader>nohl", ":nohlsearch<CR>", { desc = "Turn off search highlight" })
+-- Esc in normal mode also clears the search highlight
+keymap("n", "<Esc>", "<cmd>nohlsearch<CR><Esc>", { desc = "Clear search highlight" })
 
 -- Nvim-Tree
 keymap("n", "<leader>nt", function()
@@ -11,7 +11,7 @@ keymap("n", "<leader>nt", function()
 end, { noremap = true, silent = true, desc = "Toggle Nvim Tree" })
 
 -- Keybinding for opening tree at the current file
-vim.keymap.set("n", "<leader>nf", ":NvimTreeFindFile<CR>", { noremap = true, silent = true })
+keymap("n", "<leader>nf", ":NvimTreeFindFile<CR>", { silent = true, desc = "Show current file in tree" })
 
 -- Telescope. Resolved on keypress rather than at load time, so a telescope
 -- failure cannot wipe out every mapping defined below this point.
@@ -25,14 +25,10 @@ keymap("n", "<leader>ff", builtin("find_files"), { desc = "Telescope find files"
 keymap("n", "<leader>fg", builtin("live_grep"), { desc = "Telescope live grep" })
 keymap("n", "<leader>fb", builtin("buffers"), { desc = "Telescope buffers" })
 keymap("n", "<leader>fh", builtin("help_tags"), { desc = "Telescope help tags" })
-
-keymap("n", "<leader>gd", function()
-  if #vim.lsp.get_clients() > 0 then
-    require("telescope.builtin").lsp_definitions()
-  else
-    print("No LSP server attached")
-  end
-end, { desc = "Go to Definition" })
+keymap("n", "<leader>fr", builtin("oldfiles"), { desc = "Telescope recent files" })
+keymap("n", "<leader>fw", builtin("grep_string"), { desc = "Telescope grep word under cursor" })
+keymap("n", "<leader>fd", builtin("diagnostics"), { desc = "Telescope diagnostics" })
+keymap("n", "<leader>f.", builtin("resume"), { desc = "Telescope resume last search" })
 
 -- Bufferline
 keymap("n", "<leader>bn", ":BufferLineCycleNext<CR>", { desc = "Next buffer" })
@@ -64,7 +60,7 @@ keymap("n", "<leader>mv", function()
 end, { desc = "Verbose format" })
 
 -- Other key mappings
-vim.keymap.set("n", "<leader>cf", ":CopyFullPath<CR>", { noremap = true, silent = true })
-vim.keymap.set("n", "<leader>cr", ":CopyRelativePath<CR>", { noremap = true, silent = true })
+keymap("n", "<leader>cf", ":CopyFullPath<CR>", { silent = true, desc = "Copy full file path" })
+keymap("n", "<leader>cr", ":CopyRelativePath<CR>", { silent = true, desc = "Copy relative file path" })
 
 return true

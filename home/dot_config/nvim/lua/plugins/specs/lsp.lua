@@ -54,7 +54,14 @@ vim.api.nvim_create_autocmd("LspAttach", {
     vim.keymap.set("n", "gd", vim.lsp.buf.definition, opts("LSP: Go to definition"))
     vim.keymap.set("n", "gD", vim.lsp.buf.declaration, opts("LSP: Go to declaration"))
     vim.keymap.set("n", "gi", vim.lsp.buf.implementation, opts("LSP: Go to implementation"))
-    vim.keymap.set("n", "gr", vim.lsp.buf.references, opts("LSP: References"))
+    -- nowait: Neovim's own grn/gra/grr/gri maps would otherwise make gr wait
+    -- for timeoutlen before running.
+    vim.keymap.set(
+      "n",
+      "gr",
+      vim.lsp.buf.references,
+      vim.tbl_extend("force", opts("LSP: References"), { nowait = true })
+    )
     vim.keymap.set("n", "K", vim.lsp.buf.hover, opts("LSP: Hover docs"))
     vim.keymap.set("n", "<leader>rn", vim.lsp.buf.rename, opts("LSP: Rename symbol"))
     vim.keymap.set({ "n", "v" }, "<leader>ca", vim.lsp.buf.code_action, opts("LSP: Code action"))
