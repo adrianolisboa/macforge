@@ -35,6 +35,12 @@ keymap("n", "<C-p>", builtin("find_files"), { desc = "Find files" })
 keymap("n", "<leader><leader>", builtin("find_files"), { desc = "Find files" })
 keymap("n", "<leader>/", builtin("live_grep"), { desc = "Search text in project" })
 
+-- Look up shortcuts: search every map by name, or open the which-key menu.
+keymap("n", "<leader>fk", builtin("keymaps"), { desc = "Telescope search shortcuts" })
+keymap("n", "<leader>?", function()
+  require("which-key").show({ global = false })
+end, { desc = "Shortcuts for this buffer" })
+
 -- Bufferline
 keymap("n", "<leader>bn", ":BufferLineCycleNext<CR>", { desc = "Next buffer" })
 keymap("n", "<leader>bp", ":BufferLineCyclePrev<CR>", { desc = "Previous buffer" })
