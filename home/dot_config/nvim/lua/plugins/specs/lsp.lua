@@ -31,6 +31,21 @@ vim.lsp.config("lua_ls", {
   },
 })
 
+-- Tailwind's default list includes markdown, so it started in every .md file.
+vim.lsp.config("tailwindcss", {
+  filetypes = {
+    "html",
+    "css",
+    "scss",
+    "javascript",
+    "javascriptreact",
+    "typescript",
+    "typescriptreact",
+    "heex",
+    "eelixir",
+  },
+})
+
 -- Servers installed by the Brewfile. The ones without a config above use the
 -- defaults nvim-lspconfig ships in its lsp/ directory.
 vim.lsp.enable({

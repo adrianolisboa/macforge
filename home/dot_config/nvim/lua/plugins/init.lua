@@ -21,6 +21,23 @@ return require("lazy").setup({
     lazy = false, -- Load during startup
     priority = 1000, -- Ensure it loads before other plugins
     config = function()
+      -- nvim-solarized-lua draws the tabline and statusline with reverse video.
+      -- Neovim combines every bar segment with these base groups, so the reverse
+      -- leaked into bufferline and lualine and swapped their colors (grey tabs).
+      -- Redefine the base groups without it each time the colorscheme loads.
+      vim.api.nvim_create_autocmd("ColorScheme", {
+        pattern = "solarized",
+        callback = function()
+          local set = vim.api.nvim_set_hl
+          set(0, "TabLine", { fg = "#586e75", bg = "#073642" })
+          set(0, "TabLineFill", { fg = "#586e75", bg = "#073642" })
+          set(0, "TabLineSel", { fg = "#93a1a1", bg = "#002b36", bold = true })
+          set(0, "StatusLine", { fg = "#93a1a1", bg = "#073642" })
+          set(0, "StatusLineNC", { fg = "#586e75", bg = "#073642" })
+          set(0, "StatusLineTerm", { link = "StatusLine" })
+          set(0, "StatusLineTermNC", { link = "StatusLineNC" })
+        end,
+      })
       vim.cmd([[ colorscheme solarized ]])
     end,
   },

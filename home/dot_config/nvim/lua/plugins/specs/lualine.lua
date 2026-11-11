@@ -16,9 +16,17 @@ local function gitsigns_diff()
   end
 end
 
+-- solarized_dark paints the second block light grey; keep it dark like the bars
+local theme = require("lualine.themes.solarized_dark")
+for _, mode in pairs(theme) do
+  if mode.b then
+    mode.b = { fg = "#93a1a1", bg = "#073642" }
+  end
+end
+
 require("lualine").setup({
   options = {
-    theme = "solarized_dark",
+    theme = theme,
     globalstatus = true,
     component_separators = "",
     section_separators = "",
